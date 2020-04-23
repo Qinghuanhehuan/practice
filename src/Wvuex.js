@@ -45,6 +45,7 @@ class Store{
   }
 
   handleGetters(getters){
+    this.getters = {}
     Object.keys(getters).forEach(key=>{
       Object.defineProperty(this.getters,key,{
         get:()=>{
