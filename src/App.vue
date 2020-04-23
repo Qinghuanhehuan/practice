@@ -1,13 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <router-view/> -->
+    <VuexTest></VuexTest>
   </div>
 </template>
-
+<script>
+import VuexTest from './components/VuexTest'
+export default {
+  components:{
+    VuexTest
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
