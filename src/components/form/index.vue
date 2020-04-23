@@ -43,14 +43,14 @@ export default {
           notice = create(Notice,{
             title:'登录提示',
             message:'登录成功！',
-            duration:10000
+            duration:4000
           })
         }else{
           // alert('登录失败！')
           notice = create(Notice,{
             title:'登录提示',
             message:'登录失败！',
-            duration:10000
+            duration:4000
           })
         }
         notice.show();

@@ -1,6 +1,6 @@
-# simple_login
+# vue_practice
 ```
-简单封装的登录验证组件
+Vue封装的登录验证/弹窗/树等组件
 ```
 
 ## Project setup
