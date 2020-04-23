@@ -5,14 +5,17 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/> -->
-    <VuexTest></VuexTest>
+    <!-- <VuexTest></VuexTest> -->
+    <WVuexTest></WVuexTest>
   </div>
 </template>
 <script>
-import VuexTest from './components/VuexTest'
+// import VuexTest from './components/VuexTest'
+import WVuexTest from './components/WVuexTest'
 export default {
   components:{
-    VuexTest
+    // VuexTest,
+    WVuexTest
   }
 }
 </script>
