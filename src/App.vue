@@ -1,28 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <WForm ref="loginForm" :model="model" :rules="rules">
+      <WFormItem label="用户名" prop="username">
+        <WFormInput v-model="model.username"></WFormInput>
+      </WFormItem>
+      <WFormItem lable="密码" prop="password">
+        <WFormInput v-model="model.password" type="password"></WFormInput>
+      </WFormItem>
+      <WFormItem>
+        <button @click="onlogin">登录</button>
+      </WFormItem>
+    </WForm>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import WForm from './components/WForm'
+import WFormItem from './components/WFormItem'
+import WFormInput from './components/WFormInput'
 
 export default {
   name: 'App',
+  data(){
+    return{
+      model:{
+        username:'ww',
+        password:''
+      },
+      rules:{
+        username:[{required:true,message:'用户名必填'}],
+        password:[{required:true,message:'密码必填'}]
+      }
+    }
+  },
+  methods:{
+    onlogin(){
+      this.$refs.loginForm.validate((isValid)=>{
+        if(isValid){
+          alert('登录成功！')
+        }else{
+          alert('登录失败！')
+        }
+      })
+    }
+  },
   components: {
-    HelloWorld
+    WForm,
+    WFormItem,
+    WFormInput
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
