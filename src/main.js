@@ -6,6 +6,8 @@ import store from './store'
 // import router from './wrouter'
 import "./icons/"
 import "./permission"
+import permission from "@/directive/permission"
+Vue.directive('permission',permission)
 
 Vue.config.productionTip = false
 // 添加总线事件
