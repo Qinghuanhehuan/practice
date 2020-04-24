@@ -7,12 +7,8 @@
     <router-view/> -->
     <!-- <VuexTest></VuexTest> -->
     <WVuexTest></WVuexTest>
-    <svg>
-      <use xlink:href="#icon-wx"></use>
-    </svg>
-    <svg>
-      <use xlink:href="#icon-qq"></use>
-    </svg>
+    <Icon icon-class="qq" class-name="myicon"></Icon>
+    <Icon icon-class="wx" class-name="myicon"></Icon>
   </div>
 </template>
 <script>
@@ -45,5 +41,10 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.myicon {
+  font-size: 20px;
+  color: green;
 }
 </style>
