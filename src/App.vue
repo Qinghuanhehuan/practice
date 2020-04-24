@@ -7,6 +7,12 @@
     <router-view/> -->
     <!-- <VuexTest></VuexTest> -->
     <WVuexTest></WVuexTest>
+    <svg>
+      <use xlink:href="#icon-wx"></use>
+    </svg>
+    <svg>
+      <use xlink:href="#icon-qq"></use>
+    </svg>
   </div>
 </template>
 <script>

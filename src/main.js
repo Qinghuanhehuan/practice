@@ -4,6 +4,7 @@ import router from './router'
 // import store from './store'
 import store from './store/windex'
 // import router from './wrouter'
+import "./icons"
 
 Vue.config.productionTip = false
 // 添加总线事件
