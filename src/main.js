@@ -8,6 +8,7 @@ import "./icons/"
 import "./permission"
 import permission from "@/directive/permission"
 Vue.directive('permission',permission)
+import "@/plugins/element.js";
 
 Vue.config.productionTip = false
 // 添加总线事件
