@@ -1,44 +1,46 @@
-//做全局路由
 import router from './router'
 import store from './store'
-import Message from 'element-ui'
-import {getToken} from '@/utils/auth'//从cookie获取令牌
-const whiteList = ['/login']
-
-router.beforeEach(async(to, from, next) => {
+import { Message } from 'element-ui'
+import { getToken } from '@/utils/auth' // 从cookie获取令牌
+const whiteList = ['/login'] // ⽆需令牌⽩名单
+router.beforeEach(async (to, from, next) => {
+  // 获取令牌判断⽤户是否登录
   const hasToken = getToken()
-  if(hasToken){
-    // 有令牌
-    if(to.path==='./login'){
-      // 已登录，重定向至首页
+  if (hasToken) {
+    if (to.path === '/login') {
+      // 若已登录重定向⾄⾸⻚
       next({ path: '/' })
-    }else{
-      // 用户角色已附加，说明动态路由已添加
-      const hasRoles = store.getter.roles && store.getters.roles.length > 0
-      if(hasRoles){
-        next()
-      }else{
-        try{
-          // 1.请求用户信息
+    } else {
+      // 若⽤户⻆⾊已附加则说明动态路由已添加
+      const hasRoles = store.getters.roles && store.getters.roles.length > 0
+      if (hasRoles) {
+        next() // 继续即可
+      } else {
+        try {
+          // 先请求获取⽤户信息
           const { roles } = await store.dispatch('user/getInfo')
-          // 2.根据角色生成动态路由
-          const accessRoutes = store.dispatch('permission/generateRoutes', roles)
-          // 3.添加只router
+          // 根据当前⽤户⻆⾊动态⽣成路由
+          const accessRoutes = await
+            store.dispatch('permission/generateRoutes', roles)
+          // 添加这些路由⾄路由器
           router.addRoutes(accessRoutes)
-          // 4.重定向
+          // 继续路由切换，确保addRoutes完成
           next({ ...to, replace: true })
-        }catch(error){
-          await store.dispatch('user/restToken')
+        } catch (error) {
+          // 出错需重置令牌并重新登录（令牌过期、⽹络错误等原因）
+          await store.dispatch('user/resetToken')
           Message.error(error || 'Has Error')
           next(`/login?redirect=${to.path}`)
         }
       }
     }
   } else {
-    //用户无令牌
-    if(whiteList.indexOf(to.path)!== -1){
-      next();
-    }else{
+    // ⽤户⽆令牌
+    if (whiteList.indexOf(to.path) !== -1) {
+      // ⽩名单路由放过
+      next()
+    } else {
+      // 重定向⾄登录⻚
       next(`/login?redirect=${to.path}`)
     }
   }

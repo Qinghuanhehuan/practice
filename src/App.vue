@@ -1,23 +1,24 @@
 <template>
   <div id="app">
+    <router-view></router-view>
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/> -->
     <!-- <VuexTest></VuexTest> -->
-    <WVuexTest></WVuexTest>
-    <Icon icon-class="qq" class-name="myicon"></Icon>
-    <Icon icon-class="wx" class-name="myicon"></Icon>
+    <!-- <WVuexTest></WVuexTest> -->
+    <!-- <Icon icon-class="qq" class-name="myicon"></Icon>
+    <Icon icon-class="wx" class-name="myicon"></Icon> -->
   </div>
 </template>
 <script>
 // import VuexTest from './components/VuexTest'
-import WVuexTest from './components/WVuexTest'
+// import WVuexTest from './components/WVuexTest'
 export default {
   components:{
     // VuexTest,
-    WVuexTest
+    // WVuexTest
   }
 }
 </script>

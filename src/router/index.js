@@ -121,4 +121,22 @@ const router = new VueRouter({
 //   return route
 // }
 
+// // 前端组件名和组件映射表
+// const map = {
+//   // login:require('login/index').default // 同步方式
+//   login: () => import('login/index') //异步方式
+// }
+// //服务端返回的map类似于
+// const serviceMap = [
+//   { path: '/login', component: 'login', hidden: true }
+// ]
+// //遍历serviceMap，将component替换为map[component]，动态生成asyncRoutes
+// function mapComponent(route) {
+//   route.component = serviceMap[route.component];
+//   if (route.children) {
+//     route.children = route.children.map(child => mapComponent(child))
+//   }
+//   return route
+// }
+
 export default router
